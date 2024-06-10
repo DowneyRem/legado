@@ -83,7 +83,7 @@ object DefaultData {
             appCtx.assets.open("defaultData${File.separator}sourceSub.json")
                 .readBytes()
         )
-        GSON.fromJsonArray<RssSource>(json).getOrDefault(emptyList())
+        GSON.fromJsonArray<SourceSub>(json).getOrDefault(emptyList())
     }
 
 
@@ -100,7 +100,7 @@ object DefaultData {
             appCtx.assets.open("defaultData${File.separator}bookSource.json")
                 .readBytes()
         )
-        GSON.fromJsonArray<RssSource>(json).getOrDefault(emptyList())
+        GSON.fromJsonArray<BookSource>(json).getOrDefault(emptyList())
     }
     
 
@@ -142,7 +142,17 @@ object DefaultData {
         appDb.rssSourceDao.deleteDefault()
         appDb.rssSourceDao.insert(*rssSources.toTypedArray())
     }
-
+    
+    fun importDefaultBookSources() {
+        appDb.rssSourceDao.deleteDefault()
+        appDb.rssSourceDao.insert(*bookSources.toTypedArray())
+    }
+    
+    fun importDefaultSourceSub.json() {
+        appDb.rssSourceDao.deleteDefault()
+        appDb.rssSourceDao.insert(*sourceSub.toTypedArray())
+    }
+    
     fun importDefaultDictRules() {
         appDb.dictRuleDao.insert(*dictRules.toTypedArray())
     }
