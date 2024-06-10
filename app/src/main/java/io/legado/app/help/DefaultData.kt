@@ -80,11 +80,29 @@ object DefaultData {
 
     val rssSources: List<RssSource> by lazy {
         val json = String(
+            appCtx.assets.open("defaultData${File.separator}sourceSub.json")
+                .readBytes()
+        )
+        GSON.fromJsonArray<RssSource>(json).getOrDefault(emptyList())
+    }
+
+
+    val rssSources: List<RssSource> by lazy {
+        val json = String(
             appCtx.assets.open("defaultData${File.separator}rssSources.json")
                 .readBytes()
         )
         GSON.fromJsonArray<RssSource>(json).getOrDefault(emptyList())
     }
+
+    val rssSources: List<RssSource> by lazy {
+        val json = String(
+            appCtx.assets.open("defaultData${File.separator}bookSource.json")
+                .readBytes()
+        )
+        GSON.fromJsonArray<RssSource>(json).getOrDefault(emptyList())
+    }
+    
 
     val coverRule: BookCover.CoverRule by lazy {
         val json = String(
