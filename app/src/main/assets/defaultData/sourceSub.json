@@ -1,0 +1,83 @@
+[
+  {
+    "autoUpdate": false,
+    "customOrder": 1,
+    "id": 1675163276781,
+    "name": "Pixiv",
+    "type": 0,
+    "update": 1675163276781,
+    "url": "https://raw.githubusercontent.com/windyhusky/PixivSource/main/pixiv.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 2,
+    "id": 1675212157348,
+    "name": "Linpx",
+    "type": 0,
+    "update": 1675212157348,
+    "url": "https://raw.githubusercontent.com/windyhusky/PixivSource/main/linpx.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 3,
+    "id": 1684082407778,
+    "name": "Furry 合集",
+    "type": 1,
+    "update": 1684082407778,
+    "url": "https://raw.githubusercontent.com/windyhusky/PixivSource/main/btsrk.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 4,
+    "id": 1701404510742,
+    "name": "一程订阅",
+    "type": 1,
+    "update": 1701404510742,
+    "url": "https://www.gitlink.org.cn/api/yi-c/yd/raw/dy.json?ref=master"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 5,
+    "id": 1701404684810,
+    "name": "一程书源",
+    "type": 0,
+    "update": 1701404684810,
+    "url": "https://www.gitlink.org.cn/api/yi-c/yd/raw/sy.json?ref=master"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 6,
+    "id": 1711355133248,
+    "name": "通用书源",
+    "type": 0,
+    "update": 1711355133248,
+    "url": "https://jt12.de/SYV2_4/2023/09/13/11/48/05/1694576885650130f5133ef.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 7,
+    "id": 1711533126121,
+    "name": "",
+    "type": 1,
+    "update": 1711533126121,
+    "url": "https://shuyuan.mgz6.cc/shuyuan/00b88c04be0b345e115ba4ac3d8543ed.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 8,
+    "id": 1711797409839,
+    "name": "所有书源",
+    "type": 0,
+    "update": 1711797409839,
+    "url": "https://raw.githubusercontent.com/windyhusky/PixivSource/main/allbook.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 9,
+    "id": 1711797459527,
+    "name": "所有订阅",
+    "type": 1,
+    "update": 1711797459527,
+    "url": "https://raw.githubusercontent.com/windyhusky/PixivSource/main/allrss.json"
+  }
+]
