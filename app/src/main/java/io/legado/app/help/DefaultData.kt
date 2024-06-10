@@ -33,6 +33,12 @@ object DefaultData {
                 if (LocalConfig.needUpRssSources) {
                     importDefaultRssSources()
                 }
+                if (LocalConfig.needUpBookSources) {
+                    importDefaultBookSources()
+                }
+                if (LocalConfig.needUpSourceSub) {
+                    importDefaultSourceSub()
+                }
                 if (LocalConfig.needUpDictRule) {
                     importDefaultDictRules()
                 }
