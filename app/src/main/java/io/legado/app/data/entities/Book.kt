@@ -16,7 +16,6 @@ import io.legado.app.help.book.BookHelp
 import io.legado.app.help.book.ContentProcessor
 import io.legado.app.help.book.isEpub
 import io.legado.app.help.book.isImage
-import io.legado.app.help.book.isPdf
 import io.legado.app.help.book.simulatedTotalChapterNum
 import io.legado.app.help.config.AppConfig
 import io.legado.app.help.config.ReadBookConfig
@@ -238,7 +237,6 @@ data class Book(
 
     fun getImageStyle(): String? {
         return config.imageStyle
-            ?: if (isImage || isPdf) imgStyleFull else null
     }
 
     fun setTtsEngine(ttsEngine: String?) {
@@ -366,21 +364,6 @@ data class Book(
         return newBook
     }
 
-    fun updateTo(newBook: Book): Book {
-        newBook.durChapterIndex = durChapterIndex
-        newBook.durChapterTitle = durChapterTitle
-        newBook.durChapterPos = durChapterPos
-        newBook.durChapterTime = durChapterTime
-        newBook.group = group
-        newBook.order = order
-        newBook.customCoverUrl = customCoverUrl
-        newBook.customIntro = customIntro
-        newBook.customTag = customTag
-        newBook.canUpdate = canUpdate
-        newBook.readConfig = readConfig
-        return newBook
-    }
-
     fun createBookMark(): Bookmark {
         return Bookmark(
             bookName = name,
@@ -394,10 +377,6 @@ data class Book(
         } else {
             appDb.bookDao.insert(this)
         }
-    }
-
-    fun update() {
-        appDb.bookDao.update(this)
     }
 
     fun delete() {
@@ -414,6 +393,7 @@ data class Book(
         const val imgStyleDefault = "DEFAULT"
         const val imgStyleFull = "FULL"
         const val imgStyleText = "TEXT"
+        const val imgStyleSingle = "SINGLE"
     }
 
     @Parcelize

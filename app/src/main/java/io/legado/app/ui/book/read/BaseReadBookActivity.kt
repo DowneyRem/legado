@@ -27,7 +27,6 @@ import io.legado.app.help.config.ReadBookConfig
 import io.legado.app.lib.dialogs.alert
 import io.legado.app.lib.dialogs.selector
 import io.legado.app.lib.theme.ThemeStore
-import io.legado.app.lib.theme.backgroundColor
 import io.legado.app.lib.theme.bottomBackground
 import io.legado.app.model.CacheBook
 import io.legado.app.model.ReadBook
@@ -220,6 +219,7 @@ abstract class BaseReadBookActivity :
         upNavigationBar()
         when {
             binding.readMenu.isVisible -> super.upNavigationBarColor()
+            binding.searchMenu.bottomMenuVisible -> super.upNavigationBarColor()
             bottomDialog > 0 -> super.upNavigationBarColor()
             !AppConfig.immNavigationBar -> super.upNavigationBarColor()
             else -> setNavigationBarColorAuto(ReadBookConfig.bgMeanColor)
@@ -229,7 +229,7 @@ abstract class BaseReadBookActivity :
     @SuppressLint("RtlHardcoded")
     private fun upNavigationBar() {
         binding.navigationBar.run {
-            if (bottomDialog > 0 || binding.readMenu.isVisible) {
+            if (bottomDialog > 0 || binding.readMenu.isVisible || binding.searchMenu.bottomMenuVisible) {
 //                val navigationBarHeight =
 //                    if (ReadBookConfig.hideNavigationBar) navigationBarHeight else 0
 //                when (navigationBarGravity) {
@@ -295,7 +295,6 @@ abstract class BaseReadBookActivity :
         ReadBook.book?.let { book ->
             alert(titleResource = R.string.offline_cache) {
                 val alertBinding = DialogDownloadChoiceBinding.inflate(layoutInflater).apply {
-                    root.setBackgroundColor(root.context.backgroundColor)
                     editStart.setText((book.durChapterIndex + 1).toString())
                     editEnd.setText(book.totalChapterNum.toString())
                 }
@@ -321,7 +320,6 @@ abstract class BaseReadBookActivity :
         ReadBook.book?.let { book ->
             alert(titleResource = R.string.simulated_reading) {
                 val alertBinding = DialogSimulatedReadingBinding.inflate(layoutInflater).apply {
-                    root.setBackgroundColor(root.context.backgroundColor)
                     srEnabled.isChecked = book.getReadSimulating()
                     editStart.setText(book.getStartChapter().toString())
                     editNum.setText(book.getDailyChapters().toString())

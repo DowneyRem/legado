@@ -8,8 +8,6 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
-import android.view.View.OnLongClickListener
 import android.view.WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
 import android.view.animation.Animation
 import android.widget.FrameLayout
@@ -25,6 +23,7 @@ import io.legado.app.help.config.AppConfig
 import io.legado.app.help.config.LocalConfig
 import io.legado.app.help.config.ReadBookConfig
 import io.legado.app.help.config.ThemeConfig
+import io.legado.app.help.coroutine.Coroutine
 import io.legado.app.lib.dialogs.alert
 import io.legado.app.lib.theme.Selector
 import io.legado.app.lib.theme.accentColor
@@ -202,7 +201,12 @@ class ReadMenu @JvmOverloads constructor(
         brightnessBackground.cornerRadius = 5F.dpToPx()
         brightnessBackground.setColor(ColorUtils.adjustAlpha(bgColor, 0.5f))
         llBrightness.background = brightnessBackground
-        llBottomBg.setBackgroundColor(bgColor)
+        if (AppConfig.isEInkMode) {
+            titleBar.setBackgroundResource(R.drawable.bg_eink_border_bottom)
+            llBottomBg.setBackgroundResource(R.drawable.bg_eink_border_top)
+        } else {
+            llBottomBg.setBackgroundColor(bgColor)
+        }
         fabSearch.backgroundTintList = bottomBackgroundList
         fabSearch.setColorFilter(textColor)
         fabAutoPage.backgroundTintList = bottomBackgroundList
@@ -222,7 +226,6 @@ class ReadMenu @JvmOverloads constructor(
         ivSetting.setColorFilter(textColor, PorterDuff.Mode.SRC_IN)
         tvSetting.setTextColor(textColor)
         vwBrightnessPosAdjust.setColorFilter(textColor, PorterDuff.Mode.SRC_IN)
-        vwBg.setOnClickListener(null)
         llBrightness.setOnClickListener(null)
         seekBrightness.post {
             seekBrightness.progress = AppConfig.readBrightness
@@ -344,11 +347,13 @@ class ReadMenu @JvmOverloads constructor(
             if (AppConfig.readUrlInBrowser) {
                 context.openUrl(tvChapterUrl.text.toString().substringBefore(",{"))
             } else {
-                context.startActivity<WebViewActivity> {
-                    val url = tvChapterUrl.text.toString()
-                    putExtra("title", tvChapterName.text)
-                    putExtra("url", url)
-                    IntentData.put(url, ReadBook.bookSource?.getHeaderMap(true))
+                Coroutine.async {
+                    context.startActivity<WebViewActivity> {
+                        val url = tvChapterUrl.text.toString()
+                        putExtra("title", tvChapterName.text)
+                        putExtra("url", url)
+                        IntentData.put(url, ReadBook.bookSource?.getHeaderMap(true))
+                    }
                 }
             }
         }
