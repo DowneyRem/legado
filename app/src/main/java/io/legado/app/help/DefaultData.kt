@@ -44,6 +44,7 @@ object DefaultData {
                 }
                 if (LocalConfig.needUpServers) {
                     importDefaultServers()
+                }
                 if (LocalConfig.needUpDictRule) {
                     importDefaultDictRules()
                 }
