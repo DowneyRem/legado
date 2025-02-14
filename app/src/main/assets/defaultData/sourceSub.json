@@ -1,0 +1,38 @@
+[
+  {
+    "autoUpdate": false,
+    "customOrder": 1,
+    "id": 1675163276781,
+    "name": "Pixiv",
+    "type": 0,
+    "update": 1675163276781,
+    "url": "https://cdn.jsdelivr.net/gh/windyhusky/PixivSource@main/pixiv.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 2,
+    "id": 1675212157348,
+    "name": "Linpx",
+    "type": 0,
+    "update": 1675212157348,
+    "url": "https://cdn.jsdelivr.net/gh/windyhusky/PixivSource@main/linpx.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 3,
+    "id": 1711797459527,
+    "name": "Pixiv 订阅",
+    "type": 1,
+    "update": 1711797459527,
+    "url": "https://cdn.jsdelivr.net/gh/windyhusky/PixivSource@main/btsrk.json"
+  },
+  {
+    "autoUpdate": false,
+    "customOrder": 4,
+    "id": 1684082407778,
+    "name": "书源导入",
+    "type": 1,
+    "update": 1684082407778,
+    "url": "https://cdn.jsdelivr.net/gh/windyhusky/PixivSource@main/import.json"
+  }
+]
