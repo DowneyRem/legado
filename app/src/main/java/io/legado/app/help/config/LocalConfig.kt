@@ -71,9 +71,6 @@ by appCtx.getSharedPreferences("local", Context.MODE_PRIVATE) {
     val needUpBookSources: Boolean
         get() = !isLastVersion(6, "bookSourceVersion")
 
-    val needUpSourceSub: Boolean
-        get() = !isLastVersion(6, "sourceSubVersion")
-
     val needUpDictRule: Boolean
         get() = !isLastVersion(2, "needUpDictRule")
 

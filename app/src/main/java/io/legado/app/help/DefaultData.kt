@@ -7,7 +7,6 @@ import io.legado.app.data.entities.HttpTTS
 import io.legado.app.data.entities.KeyboardAssist
 import io.legado.app.data.entities.RssSource
 import io.legado.app.data.entities.BookSource
-import io.legado.app.data.entities.SourceSub
 import io.legado.app.data.entities.TxtTocRule
 import io.legado.app.help.config.LocalConfig
 import io.legado.app.help.config.ReadBookConfig
@@ -37,9 +36,6 @@ object DefaultData {
                 }
                 if (LocalConfig.needUpBookSources) {
                     importDefaultBookSources()
-                }
-                if (LocalConfig.needUpSourceSub) {
-                    importDefaultSourceSub()
                 }
                 if (LocalConfig.needUpDictRule) {
                     importDefaultDictRules()
@@ -102,22 +98,6 @@ object DefaultData {
         GSON.fromJsonArray<BookSource>(json).getOrDefault(emptyList())
     }
 
-    val sourceSub: List<SourceSub> by lazy {
-        val json = String(
-            appCtx.assets.open("defaultData${File.separator}sourceSub.json")
-                .readBytes()
-        )
-        GSON.fromJsonArray<SourceSub>(json).getOrDefault(emptyList())
-    }
-
-    val Servers: List<Servers> by lazy {
-        val json = String(
-            appCtx.assets.open("defaultData${File.separator}servers.json")
-                .readBytes()
-        )
-        GSON.fromJsonArray<Servers>(json).getOrDefault(emptyList())
-    }
-
     val coverRule: BookCover.CoverRule by lazy {
         val json = String(
             appCtx.assets.open("defaultData${File.separator}coverRule.json")
@@ -160,11 +140,6 @@ object DefaultData {
     fun importDefaultBookSources() {
         appDb.bookSourcesDao.deleteDefault()
         appDb.bookSourcesDao.insert(*bookSources.toTypedArray())
-    }
-
-    fun importDefaultSourcesSub() {
-        appDb.sourcesSubDao.deleteDefault()
-        appDb.sourcesSubDao.insert(*sourceSub.toTypedArray())
     }
 
     fun importDefaultDictRules() {
