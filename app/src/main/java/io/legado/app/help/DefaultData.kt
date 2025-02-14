@@ -8,7 +8,7 @@ import io.legado.app.data.entities.KeyboardAssist
 import io.legado.app.data.entities.RssSource
 import io.legado.app.data.entities.BookSource
 import io.legado.app.data.entities.SourceSub
-import io.legado.app.data.entities.Servers
+//import io.legado.app.data.entities.Servers
 import io.legado.app.data.entities.TxtTocRule
 import io.legado.app.help.config.LocalConfig
 import io.legado.app.help.config.ReadBookConfig
@@ -42,7 +42,7 @@ object DefaultData {
                 if (LocalConfig.needUpSourceSub) {
                     importDefaultSourceSub()
                 }
-                importDefaultServers()
+//                importDefaultServers()
                 if (LocalConfig.needUpDictRule) {
                     importDefaultDictRules()
                 }
