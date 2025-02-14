@@ -42,9 +42,7 @@ object DefaultData {
                 if (LocalConfig.needUpSourceSub) {
                     importDefaultSourceSub()
                 }
-                if (LocalConfig.needUpServers) {
-                    importDefaultServers()
-                }
+                importDefaultServers()
                 if (LocalConfig.needUpDictRule) {
                     importDefaultDictRules()
                 }
