@@ -68,6 +68,15 @@ by appCtx.getSharedPreferences("local", Context.MODE_PRIVATE) {
     val needUpRssSources: Boolean
         get() = !isLastVersion(6, "rssSourceVersion")
 
+    val needUpBookSources: Boolean
+        get() = !isLastVersion(6, "bookSourceVersion")
+
+    val needUpSourceSub: Boolean
+        get() = !isLastVersion(6, "sourceSubVersion")
+
+    val needUpServers: Boolean
+        get() = !isLastVersion(6, "serversVersion")
+
     val needUpDictRule: Boolean
         get() = !isLastVersion(2, "needUpDictRule")
 
