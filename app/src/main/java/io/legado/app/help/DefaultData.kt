@@ -33,7 +33,6 @@ object DefaultData {
                 }
                 if (LocalConfig.needUpRssSources) {
                     importDefaultRssSources()
-                    importDefaultBookSources()
                 }
                 if (LocalConfig.needUpDictRule) {
                     importDefaultDictRules()
@@ -87,15 +86,6 @@ object DefaultData {
         )
         GSON.fromJsonArray<RssSource>(json).getOrDefault(emptyList())
     }
-
-    val bookSources: List<BookSource> by lazy {
-        val json = String(
-            appCtx.assets.open("defaultData${File.separator}bookSources.json")
-                .readBytes()
-        )
-        GSON.fromJsonArray<BookSource>(json).getOrDefault(emptyList())
-    }
-
     val coverRule: BookCover.CoverRule by lazy {
         val json = String(
             appCtx.assets.open("defaultData${File.separator}coverRule.json")
@@ -134,12 +124,6 @@ object DefaultData {
         appDb.rssSourceDao.deleteDefault()
         appDb.rssSourceDao.insert(*rssSources.toTypedArray())
     }
-
-    fun importDefaultBookSources() {
-        appDb.bookSourcesDao.deleteDefault()
-        appDb.bookSourcesDao.insert(*bookSources.toTypedArray())
-    }
-
     fun importDefaultDictRules() {
         appDb.dictRuleDao.insert(*dictRules.toTypedArray())
     }
